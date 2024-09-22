@@ -49,7 +49,7 @@ export class DiscordBot
             console.log(`Logged in as ${this.client.user?.tag}!`);
             this.updateGamesInfo();
 
-            // Update every 30 seconds
+            // Update every 60 seconds
             setInterval(() => this.updateGamesInfo(), 60 * 1000);
         });
 
@@ -70,10 +70,17 @@ export class DiscordBot
             const gamesCount = games.length;
 
             const server = await this.client.guilds.fetch(channelAndGame.discordServerId);
-            const channel = server.channels.cache.get(channelAndGame.discordChannelId) as TextChannel;
+            await this.sleep(2000);
 
+            const channel = server.channels.cache.get(channelAndGame.discordChannelId) as TextChannel;
             await this.channelManager.updateChannelName(gamesCount, channel);
+            await this.sleep(2000);
             await this.messageUpdater.updateMessage(games, channel);
         }
+    }
+
+    private sleep(ms: number)
+    {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 }

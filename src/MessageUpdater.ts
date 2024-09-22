@@ -9,7 +9,7 @@ export class MessageUpdater
     constructor(client: Client)
     {
         this.client = client;
-        this.maxMessageLength = 1500;
+        this.maxMessageLength = 2500;
     }
 
     public async updateMessage(games: Game[], channel: TextChannel): Promise<void>
