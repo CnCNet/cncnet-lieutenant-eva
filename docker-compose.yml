@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+    app:
+        build: .
+        ports:
+            - "4001:4001"
+        volumes:
+            - .:/usr/src/app
+            - /usr/src/app/node_modules
+        command: sh -c "npm start"
