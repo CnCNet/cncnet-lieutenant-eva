@@ -1,0 +1,83 @@
+import fetch from 'node-fetch';
+
+export interface Game
+{
+    game_room: string;
+    host: string;
+    map_name: string;
+    max_players: number;
+    locked: boolean;
+    is_custom_password: boolean;
+    is_closed: boolean;
+    players: string;
+    game_mode: string;
+    game_version: string;
+}
+
+export enum CnCNet5Abbreviation 
+{
+    TD = "cncnet5_td",
+    RA = "cncnet5_ra",
+    TS = "cncnet5_ts",
+    DTA = "cncnet5_dta",
+    D2 = "cncnet5_d2",
+    YR = "cncnet5_yr",
+    MO = "cncnet5_mo",
+    PP = "cncnet5_pp",
+    RE = "cncnet5_re",
+    CNCR = "cncnet5_cncr",
+    RR = "cncnet5_rr",
+}
+
+interface APIGameDataResponse
+{
+    games: Game[];
+}
+
+export class AppAPI
+{
+    private baseGamesApiUrl: string;
+    private basePlayersApiUrl: string;
+
+    constructor()
+    {
+        this.baseGamesApiUrl = 'https://games-api.cncnet.org/games';
+        this.basePlayersApiUrl = 'https://api.cncnet.org/status';
+    }
+
+    public async fetchGameData(gameIrcChannel: string): Promise<Game[]>
+    {
+        try
+        {
+            let url = `${this.baseGamesApiUrl}?channel=${gameIrcChannel}`;
+            console.log("Fetching", url);
+
+            const response = await fetch(url);
+            const data = await response.json() as APIGameDataResponse;
+            return data.games;
+        }
+        catch (error)
+        {
+            console.error('Error fetching game data:', error);
+            return [];
+        }
+    }
+
+    public async fetchPlayersOnline(abbrev: CnCNet5Abbreviation): Promise<number>
+    {
+        try
+        {
+            let url = `${this.basePlayersApiUrl}`;
+            console.log("Fetching players online", url, abbrev);
+
+            const response = await fetch(url);
+            const responseJson = await response.json() as number;
+            return responseJson[abbrev];
+        }
+        catch (error)
+        {
+            console.error('Error fetching game data:', error);
+            return 0;
+        }
+    }
+}
