@@ -1,6 +1,12 @@
 # Lieutenant Eva Bot
 Lieutenant Eva will bring game stats into the Discord channel.
 
+Edits an existing channel to show:
+- Players online
+- Game count
+- Active games (in green), Closed/locked in orange.
+- Uses discord embeds
+
 ### Setup
 - Copy `.env.example` to `.env` and fill in the [Discord token.  ](https://discord.com/developers/) Can find this under the Bot tab when you've created a Discord application.
 - Configure what server, channel and game channels to populate in `src/DiscordBot.ts`
