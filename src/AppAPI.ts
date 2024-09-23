@@ -29,6 +29,14 @@ export enum CnCNet5Abbreviation
     RR = "cncnet5_rr",
 }
 
+export enum CnCNet5GameChannel 
+{
+    DTA = "cncnet-dta-games",
+    YR = "cncnet-yr-games",
+    MO = "cncnet-mo-games",
+    PP = "projectphantom-games",
+}
+
 interface APIGameDataResponse
 {
     games: Game[];

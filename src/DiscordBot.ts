@@ -1,5 +1,5 @@
 import { Client, GatewayIntentBits, TextChannel } from 'discord.js';
-import { AppAPI, CnCNet5Abbreviation } from './AppAPI';
+import { AppAPI, CnCNet5Abbreviation, CnCNet5GameChannel } from './AppAPI';
 import { MessageUpdater } from './MessageUpdater';
 import { ChannelUpdater } from './ChannelUpdater';
 
@@ -22,9 +22,30 @@ export class DiscordBot
         {
             // Test server
             discordServerId: "1263904444009943051",
-            discordChannelId: "1287351178371268682",
-            ircGamesChannel: "projectphantom-games",
+            discordChannelId: "1287719868522823731",
+            ircGamesChannel: CnCNet5GameChannel.PP,
             abbreviation: CnCNet5Abbreviation.PP
+        },
+        {
+            // Test server
+            discordServerId: "1263904444009943051",
+            discordChannelId: "1287719330431242280",
+            ircGamesChannel: CnCNet5GameChannel.DTA,
+            abbreviation: CnCNet5Abbreviation.DTA
+        },
+        {
+            // Test server
+            discordServerId: "1263904444009943051",
+            discordChannelId: "1287719356486389781",
+            ircGamesChannel: CnCNet5GameChannel.YR,
+            abbreviation: CnCNet5Abbreviation.YR
+        },
+        {
+            // Test server
+            discordServerId: "1263904444009943051",
+            discordChannelId: "1287719347359453236",
+            ircGamesChannel: CnCNet5GameChannel.MO,
+            abbreviation: CnCNet5Abbreviation.MO
         }
     ];
 
