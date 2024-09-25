@@ -10,16 +10,25 @@ export class ChannelUpdater
     {
         const channelId = channel.id;
 
+        console.log(this.lastGameCount);
+
         // Only update if the game count has changed
         if (this.lastGameCount[channelId] !== gamesCount)
         {
             try
             {
                 let currentChannelName: string = channel.name;
+
+                // Remove existing games count suffix, if any
                 let baseChannelName = currentChannelName.replace(/-\d+$/, '');
+
+                // Append the new games count
                 baseChannelName += `-${gamesCount}`;
-                await channel.setName(currentChannelName);
-                console.log(`Channel name updated to games-${gamesCount}`);
+
+                await channel.setName(baseChannelName);
+
+                console.log(`Channel name updated to ${baseChannelName}`);
+
                 this.lastGameCount[channelId] = gamesCount;
             }
             catch (error)
@@ -28,4 +37,5 @@ export class ChannelUpdater
             }
         }
     }
+
 }

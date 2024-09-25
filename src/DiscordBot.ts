@@ -19,29 +19,33 @@ export class DiscordBot
     private channelUpdater: ChannelUpdater;
 
     private channels: ChannelAndGame[] = [
+        // Test server
+        // {
+        //     discordServerId: "1263904444009943051",
+        //     discordChannelId: "1287719868522823731",
+        //     ircGamesChannel: CnCNet5GameChannel.PP,
+        //     abbreviation: CnCNet5Abbreviation.PP
+        // },
+        // CnCNet Server
         {
-            // Test server
             discordServerId: "188156159620939776",
             discordChannelId: "1288445845242511390",
             ircGamesChannel: CnCNet5GameChannel.PP,
             abbreviation: CnCNet5Abbreviation.PP
         },
         {
-            // Test server
             discordServerId: "188156159620939776",
             discordChannelId: "1288445422448148511",
             ircGamesChannel: CnCNet5GameChannel.DTA,
             abbreviation: CnCNet5Abbreviation.DTA
         },
         {
-            // Test server
             discordServerId: "188156159620939776",
             discordChannelId: "1288445810257825824",
             ircGamesChannel: CnCNet5GameChannel.YR,
             abbreviation: CnCNet5Abbreviation.YR
         },
         {
-            // Test server
             discordServerId: "188156159620939776",
             discordChannelId: "1288445773930958858",
             ircGamesChannel: CnCNet5GameChannel.MO,
