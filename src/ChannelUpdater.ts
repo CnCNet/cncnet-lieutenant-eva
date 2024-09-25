@@ -16,8 +16,8 @@ export class ChannelUpdater
             try
             {
                 let currentChannelName: string = channel.name;
-                // append games count
-                currentChannelName += `-${gamesCount}`;
+                let baseChannelName = currentChannelName.replace(/-\d+$/, '');
+                baseChannelName += `-${gamesCount}`;
                 await channel.setName(currentChannelName);
                 console.log(`Channel name updated to games-${gamesCount}`);
                 this.lastGameCount[channelId] = gamesCount;
