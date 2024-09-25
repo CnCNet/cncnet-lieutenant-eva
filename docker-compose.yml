@@ -8,3 +8,4 @@ services:
             - .:/usr/src/app
             - /usr/src/app/node_modules
         command: sh -c "npm start"
+        restart: always
