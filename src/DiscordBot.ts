@@ -9,6 +9,8 @@ interface ChannelAndGame
     discordChannelId: string;
     ircGamesChannel: string;
     abbreviation: CnCNet5Abbreviation;
+    gameName: string;
+    gameUrl: string;
 }
 
 export class DiscordBot
@@ -24,32 +26,42 @@ export class DiscordBot
         //     discordServerId: "1263904444009943051",
         //     discordChannelId: "1287719868522823731",
         //     ircGamesChannel: CnCNet5GameChannel.PP,
-        //     abbreviation: CnCNet5Abbreviation.PP
+        //     abbreviation: CnCNet5Abbreviation.PP,
+        //     gameName: "Project Phantom",
+        //     gameUrl: "https://cncnet.org/project-phantom"
         // },
         // CnCNet Server
         {
             discordServerId: "188156159620939776",
             discordChannelId: "1288445845242511390",
             ircGamesChannel: CnCNet5GameChannel.PP,
-            abbreviation: CnCNet5Abbreviation.PP
+            abbreviation: CnCNet5Abbreviation.PP,
+            gameName: "Project Phantom",
+            gameUrl: "https://cncnet.org/project-phantom"
         },
         {
             discordServerId: "188156159620939776",
             discordChannelId: "1288445422448148511",
             ircGamesChannel: CnCNet5GameChannel.DTA,
-            abbreviation: CnCNet5Abbreviation.DTA
+            abbreviation: CnCNet5Abbreviation.DTA,
+            gameName: "Dawn of the Tiberium Age",
+            gameUrl: "https://cncnet.org/dawn-of-the-tiberium-age"
         },
         {
             discordServerId: "188156159620939776",
             discordChannelId: "1288445810257825824",
             ircGamesChannel: CnCNet5GameChannel.YR,
-            abbreviation: CnCNet5Abbreviation.YR
+            abbreviation: CnCNet5Abbreviation.YR,
+            gameName: "Red Alert 2 & Yuri's Revenge",
+            gameUrl: "https://cncnet.org/red-alert-2"
         },
         {
             discordServerId: "188156159620939776",
             discordChannelId: "1288445773930958858",
             ircGamesChannel: CnCNet5GameChannel.MO,
-            abbreviation: CnCNet5Abbreviation.MO
+            abbreviation: CnCNet5Abbreviation.MO,
+            gameName: "Mental Omega",
+            gameUrl: "https://cncnet.org/mental-omega"
         }
     ];
 
@@ -101,9 +113,10 @@ export class DiscordBot
             await this.sleep(2000);
 
             const channel = server.channels.cache.get(channelAndGame.discordChannelId) as TextChannel;
-            await this.channelUpdater.updateChannelName(gamesCount, channel);
+            await this.messageUpdater.updateMessage(games, channel, playersOnline, channelAndGame.gameName, channelAndGame.gameUrl);
             await this.sleep(2000);
-            await this.messageUpdater.updateMessage(games, channel, playersOnline);
+
+            await this.channelUpdater.updateChannelName(gamesCount, channel);
         }
     }
 

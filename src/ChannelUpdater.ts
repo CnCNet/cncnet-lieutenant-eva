@@ -10,11 +10,13 @@ export class ChannelUpdater
     {
         const channelId = channel.id;
 
-        console.log(this.lastGameCount);
+        console.log(`ChannelUpdater ** updateChannelName ${this.lastGameCount[channelId]}`);
 
-        // Only update if the game count has changed
         if (this.lastGameCount[channelId] !== gamesCount)
         {
+            // Only update if the game count has changed
+            this.lastGameCount[channelId] = gamesCount;
+
             try
             {
                 let currentChannelName: string = channel.name;
@@ -28,8 +30,6 @@ export class ChannelUpdater
                 await channel.setName(baseChannelName);
 
                 console.log(`Channel name updated to ${baseChannelName}`);
-
-                this.lastGameCount[channelId] = gamesCount;
             }
             catch (error)
             {
@@ -37,5 +37,4 @@ export class ChannelUpdater
             }
         }
     }
-
 }
