@@ -16,7 +16,7 @@ export class DiscordBot
     private client: Client;
     private gameAPI: AppAPI;
     private messageUpdater: MessageUpdater;
-    private channelManager: ChannelUpdater;
+    private channelUpdater: ChannelUpdater;
 
     private channels: ChannelAndGame[] = [
         {
@@ -60,7 +60,7 @@ export class DiscordBot
 
         this.gameAPI = new AppAPI();
         this.messageUpdater = new MessageUpdater(this.client);
-        this.channelManager = new ChannelUpdater(this.client);
+        this.channelUpdater = new ChannelUpdater(this.client);
 
         this.initialize();
     }
@@ -97,7 +97,7 @@ export class DiscordBot
             await this.sleep(2000);
 
             const channel = server.channels.cache.get(channelAndGame.discordChannelId) as TextChannel;
-            await this.channelManager.updateChannelName(gamesCount, channel);
+            await this.channelUpdater.updateChannelName(gamesCount, channel);
             await this.sleep(2000);
             await this.messageUpdater.updateMessage(games, channel, playersOnline);
         }
