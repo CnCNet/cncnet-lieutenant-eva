@@ -45,7 +45,8 @@ export class DiscordBot
             ircGamesChannel: CnCNet5GameChannel.PP,
             abbreviation: CnCNet5Abbreviation.PP,
             gameName: "Project Phantom",
-            gameUrl: "https://cncnet.org/project-phantom"
+            gameUrl: "https://cncnet.org/project-phantom",
+            discordUrl: "https://discord.gg/BDXUcfU"
         },
         {
             discordServerId: "188156159620939776",
@@ -184,9 +185,17 @@ export class DiscordBot
                 gameCount += classicGamesOnline;
             }
 
-            await this.messageUpdater.updateMessage(games, channel, gameCount, playersOnline, channelAndGame.gameName, channelAndGame.gameUrl);
-            await this.sleep(2000);
+            await this.messageUpdater.updateMessage(
+                games,
+                channel,
+                gameCount,
+                playersOnline,
+                channelAndGame.gameName,
+                channelAndGame.gameUrl,
+                channelAndGame.discordUrl
+            );
 
+            await this.sleep(2000);
             await this.channelUpdater.updateChannelName(gameCount, channel);
         }
     }
