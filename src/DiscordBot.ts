@@ -3,15 +3,16 @@ import { AppAPI, CnCNet5Abbreviation, CnCNet5GameChannel, ClassicGameAbbreviatio
 import { MessageUpdater } from './MessageUpdater';
 import { ChannelUpdater } from './ChannelUpdater';
 
-interface ChannelAndGame
+interface ChannelAndGameMetaInfo
 {
     discordServerId: string;
     discordChannelId: string;
     ircGamesChannel: string;
     abbreviation: CnCNet5Abbreviation;
-    classicGameAbbreviation?: ClassicGameAbbreviation;
     gameName: string;
     gameUrl: string;
+    classicGameAbbreviation?: ClassicGameAbbreviation;
+    discordUrl?: string;
 }
 
 export class DiscordBot
@@ -27,7 +28,7 @@ export class DiscordBot
         ClassicGameAbbreviation.TS,
     ];
 
-    private channels: ChannelAndGame[] = [
+    private channels: ChannelAndGameMetaInfo[] = [
         // Test server
         // {
         //     discordServerId: "1263904444009943051",
@@ -52,7 +53,8 @@ export class DiscordBot
             ircGamesChannel: CnCNet5GameChannel.DTA,
             abbreviation: CnCNet5Abbreviation.DTA,
             gameName: "Dawn of the Tiberium Age",
-            gameUrl: "https://cncnet.org/dawn-of-the-tiberium-age"
+            gameUrl: "https://cncnet.org/dawn-of-the-tiberium-age",
+            discordUrl: "https://discord.gg/YczsdZC"
         },
         {
             discordServerId: "188156159620939776",
@@ -68,7 +70,8 @@ export class DiscordBot
             ircGamesChannel: CnCNet5GameChannel.MO,
             abbreviation: CnCNet5Abbreviation.MO,
             gameName: "Mental Omega",
-            gameUrl: "https://cncnet.org/mental-omega"
+            gameUrl: "https://cncnet.org/mental-omega",
+            discordUrl: "https://mentalomega.com/discord"
         },
         {
             discordServerId: "188156159620939776",
@@ -104,8 +107,26 @@ export class DiscordBot
             abbreviation: CnCNet5Abbreviation.D2,
             classicGameAbbreviation: ClassicGameAbbreviation.D2,
             gameName: "Dune 2000",
-            gameUrl: "https://cncnet.org/dune-2000"
+            gameUrl: "https://cncnet.org/dune-2000",
         },
+        {
+            discordServerId: "188156159620939776",
+            discordChannelId: "1289610821357404240",
+            ircGamesChannel: CnCNet5GameChannel.CNCR,
+            abbreviation: CnCNet5Abbreviation.CNCR,
+            gameName: "C&C Reloaded",
+            gameUrl: "https://cncnet.org/cnc-reloaded",
+            discordUrl: "https://discord.gg/NNErBGM"
+        },
+        // {
+        //     discordServerId: "188156159620939776",
+        //     discordChannelId: "1289610821357404240",
+        //     ircGamesChannel: CnCNet5GameChannel.ROTE,
+        //     abbreviation: CnCNet5Abbreviation.ROTE,
+        //     gameName: "Rise of the East",
+        //     gameUrl: "https://cncnet.org/rise-of-the-east",
+        //     discordUrl: "https://discord.com/invite/X4WaZwx"
+        // },
     ];
 
     constructor()

@@ -35,6 +35,7 @@ export enum CnCNet5Abbreviation
     RE = "cncnet5_re",
     CNCR = "cncnet5_cncr",
     RR = "cncnet5_rr",
+    ROTE = "cncnet5_rr",
 }
 
 export enum CnCNet5GameChannel 
@@ -47,6 +48,8 @@ export enum CnCNet5GameChannel
     DTA = "cncnet-dta-games",
     MO = "cncnet-mo-games",
     PP = "projectphantom-games",
+    CNCR = "cncreloaded-games",
+    ROTE = "cncnet-rote-games"
 }
 
 interface APIGameDataResponse

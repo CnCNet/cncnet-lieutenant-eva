@@ -29,7 +29,15 @@ export class MessageUpdater
             .setFooter({ text: `Game ${isAvailable ? 'Open' : 'Closed'}` });
     }
 
-    public async updateMessage(games: Game[], channel: TextChannel, gameCount: number, playersOnline: number, gameName: string, gameUrl: string): Promise<void>
+    public async updateMessage(
+        games: Game[],
+        channel: TextChannel,
+        gameCount: number,
+        playersOnline: number,
+        gameName: string,
+        gameUrl: string,
+        gameDiscordServerUrl?: string
+    ): Promise<void>
     {
         try
         {
@@ -39,6 +47,11 @@ export class MessageUpdater
             let content = `## [${gameName}](${gameUrl})\n`;
             content += `- **Games**: ${gameCount} \n`;
             content += `- **Players Online**: ${playersOnline} \n`;
+
+            if (gameDiscordServerUrl)
+            {
+                content += `- **Discord Server**: [${gameName} Discord](${gameDiscordServerUrl})\n`
+            }
 
             let remainingGames = games.length;
             let totalCharacterCount = content.length;
