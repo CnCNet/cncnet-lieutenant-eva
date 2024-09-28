@@ -29,15 +29,15 @@ export class MessageUpdater
             .setFooter({ text: `Game ${isAvailable ? 'Open' : 'Closed'}` });
     }
 
-    public async updateMessage(games: Game[], channel: TextChannel, playersOnline: number, gameName: string, gameUrl: string): Promise<void>
+    public async updateMessage(games: Game[], channel: TextChannel, gameCount: number, playersOnline: number, gameName: string, gameUrl: string): Promise<void>
     {
         try
         {
-            const messages = await channel.messages.fetch({ limit: 5 });
+            const messages = await channel.messages.fetch({ limit: 1 });
             const botMessage = messages.find((msg: Message) => msg.author.id === this.client.user?.id);
 
             let content = `## [${gameName}](${gameUrl})\n`;
-            content += `- **Games**: ${games.length} \n`;
+            content += `- **Games**: ${gameCount} \n`;
             content += `- **Players Online**: ${playersOnline} \n`;
 
             let remainingGames = games.length;

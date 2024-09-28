@@ -14,6 +14,14 @@ export interface Game
     game_version: string;
 }
 
+export enum ClassicGameAbbreviation 
+{
+    TD = "td",
+    RA = "ra",
+    TS = "ts",
+    D2 = "d2"
+}
+
 export enum CnCNet5Abbreviation 
 {
     TD = "cncnet5_td",
@@ -31,8 +39,12 @@ export enum CnCNet5Abbreviation
 
 export enum CnCNet5GameChannel 
 {
-    DTA = "cncnet-dta-games",
+    TD = "cncnet-td-games",
+    RA = "cncnet-ra-games",
+    TS = "cncnet-ts-games",
     YR = "cncnet-yr-games",
+    D2 = "cncnet-d2-games",
+    DTA = "cncnet-dta-games",
     MO = "cncnet-mo-games",
     PP = "projectphantom-games",
 }
@@ -44,11 +56,13 @@ interface APIGameDataResponse
 
 export class AppAPI
 {
+    private baseClassicGameApiUrl: string;
     private baseGamesApiUrl: string;
     private basePlayersApiUrl: string;
 
     constructor()
     {
+        this.baseClassicGameApiUrl = 'https://games-api.cncnet.org/classic';
         this.baseGamesApiUrl = 'https://games-api.cncnet.org/games';
         this.basePlayersApiUrl = 'https://api.cncnet.org/status';
     }
@@ -85,6 +99,23 @@ export class AppAPI
         catch (error)
         {
             console.error('Error fetching game data:', error);
+            return 0;
+        }
+    }
+
+    public async fetchClassicClientGames(abbrev: ClassicGameAbbreviation): Promise<number>
+    {
+        try
+        {
+            let url = `${this.baseClassicGameApiUrl}?channel=${abbrev}`;
+            console.log("Fetching", url);
+
+            const response = await fetch(url);
+            const responseJson = await response.json();
+            return responseJson[0]["count"];
+        }
+        catch (error)
+        {
             return 0;
         }
     }
