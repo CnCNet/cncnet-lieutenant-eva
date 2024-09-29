@@ -11,7 +11,7 @@ export class MessageUpdater
         this.client = client;
     }
 
-    private createGameEmbed(game: Game): EmbedBuilder
+    private createGameEmbed(game: Game, gameLogo: string): EmbedBuilder
     {
         const isAvailable = !game.locked && !game.is_custom_password;
         const embedColor = isAvailable ? "#009700" : "#e77300";
@@ -26,7 +26,7 @@ export class MessageUpdater
                 { name: '🗺️ Map', value: game.map_name, inline: true },
                 { name: `👤 Players (${game.players.split(",").length} / ${game.max_players})`, value: game.players, inline: false }
             )
-            .setFooter({ text: `Game ${isAvailable ? 'Open' : 'Closed'}` });
+            .setThumbnail(gameLogo);
     }
 
     public async updateMessage(
@@ -43,33 +43,26 @@ export class MessageUpdater
         {
             const messages = await channel.messages.fetch({ limit: 1 });
             const botMessage = messages.find((msg: Message) => msg.author.id === this.client.user?.id);
+            const embeds: EmbedBuilder[] = [];
+
+            // Sort the games so that available games come first
+            let availableGames = games.filter((g) => !g.is_custom_password && !g.is_closed && !g.locked);
+            let unavailableGames = games.filter((g) => g.is_custom_password || g.is_closed || g.locked);
 
             let content = `## [${gameName}](${gameUrl})\n`;
-            content += `- **Games**: ${gameCount} \n`;
             content += `- **Players Online**: ${playersOnline} \n`;
+            content += `- **Available Games**: ${availableGames.length} \n`;
+            content += `- **In Progress/Locked Games**: ${unavailableGames.length} \n`;
 
             if (gameDiscordServerUrl)
             {
                 content += `- **Discord Server**: [${gameName} Discord](${gameDiscordServerUrl})\n`
             }
 
-            let remainingGames = games.length;
             let totalCharacterCount = content.length;
-            const embeds: EmbedBuilder[] = [];
+            let remainingGames = availableGames.length;
 
-            // Sort the games so that available games come first
-            const sortedGames = games.sort((a, b) =>
-            {
-                const aAvailable = !a.locked && !a.is_custom_password;
-                const bAvailable = !b.locked && !b.is_custom_password;
-
-                // Available games come first
-                if (aAvailable && !bAvailable) return -1;
-                if (!aAvailable && bAvailable) return 1;
-                return 0;  // If both are the same (either both available or both locked), keep their order
-            });
-
-            for (const game of sortedGames)
+            for (const game of availableGames)
             {
                 const embed = this.createGameEmbed(game);
 

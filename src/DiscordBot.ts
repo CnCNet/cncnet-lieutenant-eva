@@ -11,6 +11,7 @@ interface ChannelAndGameMetaInfo
     abbreviation: CnCNet5Abbreviation;
     gameName: string;
     gameUrl: string;
+    gameLogo: string;
     classicGameAbbreviation?: ClassicGameAbbreviation;
     discordUrl?: string;
 }
@@ -33,10 +34,11 @@ export class DiscordBot
         // {
         //     discordServerId: "1263904444009943051",
         //     discordChannelId: "1287719330431242280",
-        //     ircGamesChannel: CnCNet5GameChannel.DTA,
-        //     abbreviation: CnCNet5Abbreviation.DTA,
+        //     ircGamesChannel: CnCNet5GameChannel.YR,
+        //     abbreviation: CnCNet5Abbreviation.YR,
         //     gameName: "Dawn of the Tiberium Age",
-        //     gameUrl: "https://cncnet.org/dawn-of-the-tiberium-age"
+        //     gameUrl: "https://cncnet.org/dawn-of-the-tiberium-age",
+        //     gameLogo: "https://cncnet.org/storage/images/dta-logo.png",
         // },
         // CnCNet Server
         {
@@ -46,6 +48,7 @@ export class DiscordBot
             abbreviation: CnCNet5Abbreviation.PP,
             gameName: "Project Phantom",
             gameUrl: "https://cncnet.org/project-phantom",
+            gameLogo: "https://cncnet.org/storage/images/pp-logo.png",
             discordUrl: "https://discord.gg/BDXUcfU"
         },
         {
@@ -55,6 +58,7 @@ export class DiscordBot
             abbreviation: CnCNet5Abbreviation.DTA,
             gameName: "Dawn of the Tiberium Age",
             gameUrl: "https://cncnet.org/dawn-of-the-tiberium-age",
+            gameLogo: "https://cncnet.org/storage/images/dta-logo.png",
             discordUrl: "https://discord.gg/YczsdZC"
         },
         {
@@ -63,7 +67,8 @@ export class DiscordBot
             ircGamesChannel: CnCNet5GameChannel.YR,
             abbreviation: CnCNet5Abbreviation.YR,
             gameName: "Red Alert 2 & Yuri's Revenge",
-            gameUrl: "https://cncnet.org/red-alert-2"
+            gameUrl: "https://cncnet.org/red-alert-2",
+            gameLogo: "https://cncnet.org/storage/images/ra2-logo.png",
         },
         {
             discordServerId: "188156159620939776",
@@ -72,7 +77,8 @@ export class DiscordBot
             abbreviation: CnCNet5Abbreviation.MO,
             gameName: "Mental Omega",
             gameUrl: "https://cncnet.org/mental-omega",
-            discordUrl: "https://mentalomega.com/discord"
+            discordUrl: "https://mentalomega.com/discord",
+            gameLogo: "https://cncnet.org/storage/images/mo-logo.png",
         },
         {
             discordServerId: "188156159620939776",
@@ -81,7 +87,8 @@ export class DiscordBot
             abbreviation: CnCNet5Abbreviation.TD,
             classicGameAbbreviation: ClassicGameAbbreviation.TD,
             gameName: "Tiberian Dawn",
-            gameUrl: "https://cncnet.org/command-and-conquer"
+            gameUrl: "https://cncnet.org/command-and-conquer",
+            gameLogo: "https://cncnet.org/storage/images/td-logo.png",
         },
         {
             discordServerId: "188156159620939776",
@@ -90,7 +97,8 @@ export class DiscordBot
             abbreviation: CnCNet5Abbreviation.RA,
             classicGameAbbreviation: ClassicGameAbbreviation.RA,
             gameName: "Red Alert",
-            gameUrl: "https://cncnet.org/red-alert"
+            gameUrl: "https://cncnet.org/red-alert",
+            gameLogo: "https://cncnet.org/storage/images/ra-logo.png",
         },
         {
             discordServerId: "188156159620939776",
@@ -99,7 +107,8 @@ export class DiscordBot
             abbreviation: CnCNet5Abbreviation.TS,
             classicGameAbbreviation: ClassicGameAbbreviation.TS,
             gameName: "Tiberian Sun",
-            gameUrl: "https://cncnet.org/tiberian-sun"
+            gameUrl: "https://cncnet.org/tiberian-sun",
+            gameLogo: "https://cncnet.org/storage/images/ts-logo.png",
         },
         {
             discordServerId: "188156159620939776",
@@ -109,6 +118,7 @@ export class DiscordBot
             classicGameAbbreviation: ClassicGameAbbreviation.D2,
             gameName: "Dune 2000",
             gameUrl: "https://cncnet.org/dune-2000",
+            gameLogo: "https://cncnet.org/storage/images/d2k-logo.png",
         },
         {
             discordServerId: "188156159620939776",
@@ -117,17 +127,19 @@ export class DiscordBot
             abbreviation: CnCNet5Abbreviation.CNCR,
             gameName: "C&C Reloaded",
             gameUrl: "https://cncnet.org/cnc-reloaded",
-            discordUrl: "https://discord.gg/NNErBGM"
+            discordUrl: "https://discord.gg/NNErBGM",
+            gameLogo: "https://cncnet.org/storage/images/cncr-logo.png",
         },
-        // {
-        //     discordServerId: "188156159620939776",
-        //     discordChannelId: "1289610821357404240",
-        //     ircGamesChannel: CnCNet5GameChannel.ROTE,
-        //     abbreviation: CnCNet5Abbreviation.ROTE,
-        //     gameName: "Rise of the East",
-        //     gameUrl: "https://cncnet.org/rise-of-the-east",
-        //     discordUrl: "https://discord.com/invite/X4WaZwx"
-        // },
+        {
+            discordServerId: "188156159620939776",
+            discordChannelId: "1289989427560583249",
+            ircGamesChannel: CnCNet5GameChannel.ROTE,
+            abbreviation: CnCNet5Abbreviation.ROTE,
+            gameName: "Rise of the East",
+            gameUrl: "https://cncnet.org/rise-of-the-east",
+            discordUrl: "https://discord.com/invite/X4WaZwx",
+            gameLogo: "https://cncnet.org/storage/images/rote-logo.png"
+        },
     ];
 
     constructor()
@@ -196,7 +208,7 @@ export class DiscordBot
             );
 
             await this.sleep(2000);
-            await this.channelUpdater.updateChannelName(gameCount, channel);
+            // await this.channelUpdater.updateChannelName(gameCount, channel);
         }
     }
 

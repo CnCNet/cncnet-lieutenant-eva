@@ -32,10 +32,9 @@ export enum CnCNet5Abbreviation
     YR = "cncnet5_yr",
     MO = "cncnet5_mo",
     PP = "cncnet5_pp",
-    RE = "cncnet5_re",
+    ROTE = "cncnet5_re",
     CNCR = "cncnet5_cncr",
     RR = "cncnet5_rr",
-    ROTE = "cncnet5_rr",
 }
 
 export enum CnCNet5GameChannel 
