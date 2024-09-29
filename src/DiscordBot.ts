@@ -208,7 +208,7 @@ export class DiscordBot
             );
 
             await this.sleep(2000);
-            // await this.channelUpdater.updateChannelName(gameCount, channel);
+            await this.channelUpdater.updateChannelName(gameCount, channel);
         }
     }
 
