@@ -11,7 +11,7 @@ interface ChannelAndGameMetaInfo
     abbreviation: CnCNet5Abbreviation;
     gameName: string;
     gameUrl: string;
-    gameLogo: string;
+    gameLogoUrl: string;
     classicGameAbbreviation?: ClassicGameAbbreviation;
     discordUrl?: string;
 }
@@ -48,7 +48,7 @@ export class DiscordBot
             abbreviation: CnCNet5Abbreviation.PP,
             gameName: "Project Phantom",
             gameUrl: "https://cncnet.org/project-phantom",
-            gameLogo: "https://cncnet.org/storage/images/pp-logo.png",
+            gameLogoUrl: "https://cncnet.org/storage/images/pp-logo.png",
             discordUrl: "https://discord.gg/BDXUcfU"
         },
         {
@@ -58,7 +58,7 @@ export class DiscordBot
             abbreviation: CnCNet5Abbreviation.DTA,
             gameName: "Dawn of the Tiberium Age",
             gameUrl: "https://cncnet.org/dawn-of-the-tiberium-age",
-            gameLogo: "https://cncnet.org/storage/images/dta-logo.png",
+            gameLogoUrl: "https://cncnet.org/storage/images/dta-logo.png",
             discordUrl: "https://discord.gg/YczsdZC"
         },
         {
@@ -68,7 +68,7 @@ export class DiscordBot
             abbreviation: CnCNet5Abbreviation.YR,
             gameName: "Red Alert 2 & Yuri's Revenge",
             gameUrl: "https://cncnet.org/red-alert-2",
-            gameLogo: "https://cncnet.org/storage/images/ra2-logo.png",
+            gameLogoUrl: "https://cncnet.org/storage/images/ra2-logo.png",
         },
         {
             discordServerId: "188156159620939776",
@@ -78,7 +78,7 @@ export class DiscordBot
             gameName: "Mental Omega",
             gameUrl: "https://cncnet.org/mental-omega",
             discordUrl: "https://mentalomega.com/discord",
-            gameLogo: "https://cncnet.org/storage/images/mo-logo.png",
+            gameLogoUrl: "https://cncnet.org/storage/images/mo-logo.png",
         },
         {
             discordServerId: "188156159620939776",
@@ -88,7 +88,7 @@ export class DiscordBot
             classicGameAbbreviation: ClassicGameAbbreviation.TD,
             gameName: "Tiberian Dawn",
             gameUrl: "https://cncnet.org/command-and-conquer",
-            gameLogo: "https://cncnet.org/storage/images/td-logo.png",
+            gameLogoUrl: "https://cncnet.org/storage/images/td-logo.png",
         },
         {
             discordServerId: "188156159620939776",
@@ -98,7 +98,7 @@ export class DiscordBot
             classicGameAbbreviation: ClassicGameAbbreviation.RA,
             gameName: "Red Alert",
             gameUrl: "https://cncnet.org/red-alert",
-            gameLogo: "https://cncnet.org/storage/images/ra-logo.png",
+            gameLogoUrl: "https://cncnet.org/storage/images/ra-logo.png",
         },
         {
             discordServerId: "188156159620939776",
@@ -108,7 +108,7 @@ export class DiscordBot
             classicGameAbbreviation: ClassicGameAbbreviation.TS,
             gameName: "Tiberian Sun",
             gameUrl: "https://cncnet.org/tiberian-sun",
-            gameLogo: "https://cncnet.org/storage/images/ts-logo.png",
+            gameLogoUrl: "https://cncnet.org/storage/images/ts-logo.png",
         },
         {
             discordServerId: "188156159620939776",
@@ -118,7 +118,7 @@ export class DiscordBot
             classicGameAbbreviation: ClassicGameAbbreviation.D2,
             gameName: "Dune 2000",
             gameUrl: "https://cncnet.org/dune-2000",
-            gameLogo: "https://cncnet.org/storage/images/d2k-logo.png",
+            gameLogoUrl: "https://cncnet.org/storage/images/d2k-logo.png",
         },
         {
             discordServerId: "188156159620939776",
@@ -128,7 +128,7 @@ export class DiscordBot
             gameName: "C&C Reloaded",
             gameUrl: "https://cncnet.org/cnc-reloaded",
             discordUrl: "https://discord.gg/NNErBGM",
-            gameLogo: "https://cncnet.org/storage/images/cncr-logo.png",
+            gameLogoUrl: "https://cncnet.org/storage/images/cncr-logo.png",
         },
         {
             discordServerId: "188156159620939776",
@@ -138,7 +138,7 @@ export class DiscordBot
             gameName: "Rise of the East",
             gameUrl: "https://cncnet.org/rise-of-the-east",
             discordUrl: "https://discord.com/invite/X4WaZwx",
-            gameLogo: "https://cncnet.org/storage/images/rote-logo.png"
+            gameLogoUrl: "https://cncnet.org/storage/images/rote-logo.png"
         },
     ];
 
@@ -204,6 +204,7 @@ export class DiscordBot
                 playersOnline,
                 channelAndGame.gameName,
                 channelAndGame.gameUrl,
+                channelAndGame.gameLogoUrl,
                 channelAndGame.discordUrl
             );
 

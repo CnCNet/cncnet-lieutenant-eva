@@ -36,7 +36,8 @@ export class MessageUpdater
         playersOnline: number,
         gameName: string,
         gameUrl: string,
-        gameDiscordServerUrl?: string
+        gameLogoUrl: string,
+        gameDiscordServerUrl?: string,
     ): Promise<void>
     {
         try
@@ -64,7 +65,7 @@ export class MessageUpdater
 
             for (const game of availableGames)
             {
-                const embed = this.createGameEmbed(game);
+                const embed = this.createGameEmbed(game, gameLogoUrl);
 
                 const embedCharacterCount = this.calculateEmbedCharacterCount(embed);
 
