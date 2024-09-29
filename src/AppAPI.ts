@@ -48,7 +48,7 @@ export enum CnCNet5GameChannel
     MO = "cncnet-mo-games",
     PP = "projectphantom-games",
     CNCR = "cncreloaded-games",
-    ROTE = "cncnet-rote-games"
+    ROTE = "rote-games"
 }
 
 interface APIGameDataResponse
